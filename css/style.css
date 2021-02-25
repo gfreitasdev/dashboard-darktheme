@@ -28,7 +28,7 @@ header .toggle-mode input[type=checkbox] {
     height: 40px;
     border-radius: 100px;
     margin-left: 20px;
-    background: var(--ToggleBtnDark);
+    background: var(--ToggleMode);
     cursor: pointer;
     outline: 0;
     position: relative;
@@ -39,9 +39,14 @@ header .toggle-mode input[type=checkbox]::before {
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    transform: scale(0.8);
+    transform: translateX(50px) scale(0.8);
     background: var(--BgLight);
+    transition: transform 0.3s;
     position: absolute;
+}
+
+header .toggle-mode input[type=checkbox]:checked::before{
+    transform: translateX(0) scale(0.8);
 }
 
 main .followers, main .grid-overview {
@@ -59,6 +64,10 @@ main .followers, main .grid-overview {
     cursor: pointer;
     background: var(--BgLightCard);
     position: relative;
+}
+
+.card:hover{
+    background: var(--BgLightCardHover);
 }
 
 .card::before{
@@ -129,4 +138,99 @@ main .followers, main .grid-overview {
 
 .card span img {
     margin-right: 5px;
+}
+
+main .overview {
+    margin-top: 50px;
+}
+
+main .overview h2{
+    color: var(--ColorDark);
+    font-size: 1.7em;
+}
+.grid-overview {
+    margin: 20px 0;
+}
+
+.grid-overview .card .title-card {
+    margin-bottom: 20px;
+}
+
+.grid-overview .card .title-card span{
+    font-size: 1.1em;
+    color: var(--ColorDarkLight);
+}
+.grid-overview .card .title-card, .grid-overview .card .text-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.grid-overview .card .text-card {
+    align-items: baseline;
+}
+
+.grid-overview .card .text-card p {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: var(--ColorDark);
+}
+
+footer.attribution {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--ColorDarkLight);
+    transition: 0.3s;
+    margin: 10px 0;
+}
+footer.attribution a {
+    color: var(--ColorDark);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+/* Responsivo */
+
+@media (min-width: 1440px) {
+    body .container {
+        max-width: 1440px;
+    }
+}
+@media (max-width: 1165px){
+    main .followers,
+    main .grid-overview {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 960px){
+    main .followers,
+    main .grid-overview {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 720px){
+    body .container {
+        max-width: 94%;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header .toggle-mode {
+        width: 100%;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid var(--ColorDarkLight);
+        justify-content: space-between;
+    }
+    header .toggle-mode input[type=checkbox] {
+        transform: scale(0.8);
+    }
+    main .followers,
+    main .grid-overview {
+        grid-template-columns: 1fr;
+    }
 }
