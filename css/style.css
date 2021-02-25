@@ -44,7 +44,7 @@ header .toggle-mode input[type=checkbox]::before {
     position: absolute;
 }
 
-main .followers{
+main .followers, main .grid-overview {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 30px;
